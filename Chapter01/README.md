@@ -1,6 +1,6 @@
 ## Answered Questions
-* 01.26 (p. 27)
-* 01.29 (p. 28)
+* 01.26 (p. 27) [Goolge Colab Link](https://colab.research.google.com/drive/1L_1edMTQoxNpaORDb39GBCKvNYPq-n37)
+* 01.29 (p. 28) [Goolge Colab Link](https://colab.research.google.com/drive/1momeEad6dNJAG_lafe7i33nVzP7_JkhL)
 
 ## 01.26 College Bookstore
 Your college bookstore has hired you as a summer intern to design a new textbook inventory system. It is to include the following major processes:
