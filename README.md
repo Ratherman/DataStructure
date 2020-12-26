@@ -2,9 +2,8 @@
 Use Python to implement the selected questions from my textbook, Data Structure.
 
 # About this repo
-For now, offer 2 ways to implement the selected questions.
-1. Directly use [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb), I will directly provide a link for that specific question.
-2. For training purpose (myself), I will also provide (a) .py file(s) as answers to the selected question.
+* To implement the selected questions, I directly use [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb) as the working space.
+* The selected questions can be found in each chapter's README.md. (See [Chapter01] for example.)
 
 # Contact info
 Very welcom to contact me if there are any suggestions or questions. <br>
