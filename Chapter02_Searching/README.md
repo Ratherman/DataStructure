@@ -3,12 +3,12 @@
 * 02.03 Collision Resolution (p. 28) [Goolge Colab Link](https://colab.research.google.com/drive/1b9fzvSJSRaZ3-9BUg78NPPVZMkSq5g26?authuser=2#scrollTo=iPe4w_TTGKZk)
 
 ## 02.01 Binary Search
-    * An array contains the elements show below. Using the binary search algorithm, trace the steps followed to find 88. At each loop iteration, including the last, show the contents of **first**, **last**, and **mid**.
-    * And use the same procedure to find 20. **(It can't be found.)**
+* An array contains the elements show below. Using the binary search algorithm, trace the steps followed to find 88. At each loop iteration, including the last, show the contents of **first**, **last**, and **mid**.
+* And use the same procedure to find 20. **(It can't be found.)**
 
-    ```
-    8 13 17 26 44 56 88 97
-    ```
+```
+8 13 17 26 44 56 88 97
+```
 
 ## 02.03 Collision Resolution
 - Using the **modulo-division** method and **linear probing**, store the keys shown below in an array with 19 elements. How many collisions occurred? What is the density of the list after all keys have been inserted?
