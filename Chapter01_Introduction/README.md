@@ -27,3 +27,6 @@ Each of the subalgorithms is described below.
     1: *****
     2: ********
     ```
+
+## Learned
+* When unittesting and we don't want to see our print-out messages, in cmd we run the testting file with "dash b". (i.e. **python test.py -b**)
