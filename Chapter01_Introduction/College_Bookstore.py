@@ -15,20 +15,20 @@ class textbook:
     return self.record
   
   # Outer API
+  
   def order_book(self, id, seller, amount, price):
     order = {"seller": seller, "amount": amount, "price": price, "order_date": (2020,11,18), "arrive_date": (1997,11,18),"arrive": False}
     self.record["orders"][id] = order
     return self.record
+  def determine_price(self, price): #ok
+    self.current_status["price"] = price
+    return self.current_status
 
   def receive_book(self, id):
     self.record["orders"][id]["arrive"] = True
     amount = self.record["orders"][id]["amount"]
     self.current_status["amount"] = self.current_status["amount"] + amount
     return self.record
-
-  def determine_price(self, price): #ok
-    self.current_status["price"] = price
-    return self.current_status
   
   def get_book_quantity(self):
     return self.current_status["amount"]
