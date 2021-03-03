@@ -33,7 +33,7 @@ class Test_College_BookStore(unittest.TestCase):
 
         # 3. 圖書系統將給定一個 id 儲存這筆 order
         id = 0
-        book.record["orders"][id] = order
+        book.order_book(id,order["seller"],order["amount"],order["price"])
 
         # 4. 檢查 Database 裡面是不是有發生符合我們預期的事情
         # 4.1 檢查 seller 是不是 Test Upstream Seller
@@ -50,6 +50,36 @@ class Test_College_BookStore(unittest.TestCase):
 
         # 4.5 檢查是否為 尚未抵達
         self.assertEqual(book.record["orders"][id]["arrive"], False)
+
+    def test_receive_book(self):
+        
+        # 1. 要先 order 才能 receive
+        book = cb.textbook("AI.FREE_Book") # 這個動作表示我確定上游廠商有這本書。
+
+        order = {
+            "seller": "Test Upstream Seller",
+            "amount": 10,
+            "price": 330,
+            "order_date": (2020,11,18),
+            "arrive_date": (2000,10,20),
+            "arrive": False,
+        }
+
+        id = 0
+        book.order_book(id, order["seller"], order["amount"], order["price"])
+
+        # 2. 確認 Receive 之前的狀態，然後再 Receive
+        pre_amount = book.get_book_quantity()
+        pre_arrive = book.record["orders"][id]["arrive"]
+        self.assertEqual(pre_amount, 0)
+        self.assertEqual(pre_arrive, False)
+        book.receive_book(0)
+
+        # 3.1 檢查 amount 是不是有增加 10
+        self.assertEqual(pre_amount+order["amount"], book.get_book_quantity())
+
+        # 3.2 檢查 arrive 是不是有變成 True
+        self.assertEqual(book.record["orders"][id]["arrive"], True)
 
     def test_determine_price(self):
 
