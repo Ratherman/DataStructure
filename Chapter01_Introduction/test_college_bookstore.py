@@ -93,5 +93,22 @@ class Test_College_BookStore(unittest.TestCase):
         self.assertEqual(book.get_current_status()["price"], 330)
         
 
+    def test_get_book_quantity(self):
+                
+                
+        # 1. 建立一個 textbook instance
+        book = cb.textbook("AI.FREE_Book")
+
+        # 2. order 20 本書
+        amount = 20
+        id = 0
+        book.order_book(id, "AI.FREE Team", amount, 100)
+
+        # 3. receive 20 本書
+        book.receive_book(0)
+
+        # 4. 確認資料庫中確實有 20 本書
+        self.assertEqual(book.get_book_quantity(), amount)
+
 if __name__ == "__main__":
     unittest.main()
