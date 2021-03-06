@@ -135,5 +135,32 @@ class Test_College_BookStore(unittest.TestCase):
         check_sell_amount = book.get_record()["sales"][sell_id]["amount"]
         self.assertEqual(check_sell_amount, sell_amount)
 
+    def test_return_book(self):
+        # 1. 建立 book instance
+        book = cb.textbook("AI.FREE_Book")
+
+        # 2. 向上游廠商訂書
+        order_id = 0
+        book.order_book(order_id, "Big Seller", 20, 330)
+
+        # 3. 上游廠商拿書來
+        book.receive_book(order_id)
+
+        # 4. 對書定價
+        book.determine_price(350)
+
+        # 5. 有人買書
+        sell_id = 0
+        book.sell_book(sell_id, "Small Buyer", 3)
+
+        # 6. 有人退書(假設退了的書就丟掉不用，而且只能全退 ^_^)
+        book.return_book(sell_id)
+
+        # 7. 確認退書之後，資料庫的salse狀態符合預期 Return: From False to True
+        check_return_book = book.get_record()["sales"][sell_id]["return_book"]
+        self.assertEqual(check_return_book, True)
+
+    def test_get_return_quantity(self):
+
 if __name__ == "__main__":
     unittest.main()

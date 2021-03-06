@@ -41,7 +41,7 @@ class textbook:
     self.record["sales"][id] = sale
     return self.record
 
-  def return_book(self, id):
+  def return_book(self, id): #ok
     self.record["sales"][id]["return_book"] = True
     return self.record
 
