@@ -45,7 +45,7 @@ class textbook:
     self.record["sales"][id]["return_book"] = True
     return self.record
 
-  def get_return_quantity(self):
+  def get_return_quantity(self): #ok
     total = 0
     for sale in self.record["sales"].values():
       if sale["return_book"] == True:
