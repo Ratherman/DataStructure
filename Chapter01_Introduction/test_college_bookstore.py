@@ -91,10 +91,8 @@ class Test_College_BookStore(unittest.TestCase):
 
         # 3. 確認價格的變動符合預期
         self.assertEqual(book.get_current_status()["price"], 330)
-        
 
     def test_get_book_quantity(self):
-                
                 
         # 1. 建立一個 textbook instance
         book = cb.textbook("AI.FREE_Book")
@@ -109,6 +107,33 @@ class Test_College_BookStore(unittest.TestCase):
 
         # 4. 確認資料庫中確實有 20 本書
         self.assertEqual(book.get_book_quantity(), amount)
+
+    def test_sell_book(self):
+        # 1. 建立一個 book instance
+        book = cb.textbook("AI.FREE_Book")
+
+        # 2. 從上游廠商訂 20 本書
+        tic_amount = 20
+        order_id = 0
+        book.order_book(order_id, "Big Seller", tic_amount, 100)
+
+        # 3. 然後拿到 20 本書
+        book.receive_book(0)
+
+        # 4. 對這個 book instance 定價，訂330元。
+        book.determine_price(330)
+
+        # 5. 販賣書本3本
+        sell_amount = 3
+        sell_id = 0
+        book.sell_book(sell_id, "Small Buyer", sell_amount)
+
+        # 6. 檢查資料庫中是不是真的有少3本
+        self.assertEqual(book.get_book_quantity(), tic_amount - sell_amount)
+        
+        # 7. 檢查資料庫中是不是真的有多了3本的販賣紀錄
+        check_sell_amount = book.get_record()["sales"][sell_id]["amount"]
+        self.assertEqual(check_sell_amount, sell_amount)
 
 if __name__ == "__main__":
     unittest.main()
