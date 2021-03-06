@@ -1,5 +1,5 @@
 import unittest
-import college_bookstore as cb
+import College_Bookstore as cb
 
 class Test_College_BookStore(unittest.TestCase):
     
