@@ -1,6 +1,9 @@
 import pandas as pd
 import os
 
+# Note:
+# This program could be more flexible, like it can detect the min and max of the data to decide the boundary of the RANGE.
+
 class presenter:
 
     def __init__(self): pass
