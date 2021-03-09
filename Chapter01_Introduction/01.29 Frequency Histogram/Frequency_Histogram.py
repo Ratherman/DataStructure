@@ -6,22 +6,25 @@ import os
 
 class presenter:
 
-    def __init__(self): pass
+    def __init__(self): 
+        pass
     
     # Input: file_name <string> the file containing the data.
     # Output: dataOut <list> a list of data.
     def getData(self, file_name):
         # Check the file is exist
         exist = self.check_file_exist(file_name)
+        if exist:
+            # The dataType is DataFrame.
+            data = pd.read_csv("data.csv")
 
-        # The dataType is DataFrame.
-        data = pd.read_csv("data.csv")
-
-        # The dataType is transformed to List
-        data_list = []
-        for datum in data["1"]: data_list.append(datum)
-        return data_list
-
+            # The dataType is transformed to List
+            data_list = []
+            for datum in data["1"]: data_list.append(datum)
+            return data_list
+        else:
+            print(f"{file_name} doesn't exist.")
+            exit()
     # Input: data_list <list> It contains data.
     # Output: None
     def printData(self, data_list):
@@ -42,8 +45,3 @@ class presenter:
     # Input: file_name <String> It contains data in csv form.
     # Output: result <Boolean> It checks whether the file exist.
     def check_file_exist(self, file_name): return file_name in os.listdir()
-
-presenter = presenter()
-data = presenter.getData("data.csv")
-data_freq = presenter.makeFrequency(data)
-presenter.makeHistogram(data_freq, "data.csv")
